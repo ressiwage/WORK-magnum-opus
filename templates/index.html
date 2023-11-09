@@ -9,14 +9,26 @@
 			margin: 0;
 		}
 	</style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
 </head>
 
 <body>
 	<style>
+
+		@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+		:root {
+        	scroll-behavior:unset!important
+    	}
+		body{
+			background-color: #0f0204;
+			color: #FBE6E9;
+			font-family: 'Kanit', sans-serif;
+		}
 		.portfolio{
 			border:1px solid red;
-			min-height: 150vh;
+			min-height: 100vh;
 		}
 		#three-notebook{
 			border:1px solid blueviolet;
@@ -34,11 +46,48 @@
 			position: fixed;
 			display: block;
 		}
+		#three-points{
+			position: absolute;
+			z-index: -1;
+		}
+		.title{
+			position: relative;
+			min-height: 100vh;
+			min-width: 100vw;
+		}
+		/*only desktop*/
+		.title__left{
+			position: absolute;
+			left:30%;
+			top:40%;
+			opacity: 0;
+		}
+		.title__right{
+			position: absolute;
+			right:20%;
+			bottom:10%;
+			opacity: 0;
+		}
+		.big-text{
+			font-size: 5em;
+			font-weight: 600;
+		}
 	</style>
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br>
 	<header class="nav-menu">
 		<br>
 	</header>
+
+	<section class="title">
+		<div id="three-points"></div>
+		<div class="title__left translate-middle">
+			<h2 class="big-text">FrontEnd</h2>
+			<h2 class="big-text">BackEnd</h2>
+			<h2 class="big-text">FullStack</h2>
+			<h2 class="big-text">devOps</h2>
+		</div>
+		<h1 class="title__right d-block big-text">developer</h1>
+	</section>
 
 	<section class="about-me">
 		<br>
@@ -53,6 +102,7 @@
 			assumenda, tempore quaerat eligendi animi optio minus. Ipsam porro, quibusdam dolorem officia sapiente error
 			perferendis at!</h3>
 		<h3 id="debug-1"></h3>
+		<br>
 		<button id="debug-btn">debug</button>
 		<button id="debug-btn-1">debug1</button>
 		<div id="three-notebook"></div>
@@ -108,10 +158,9 @@
 		<br>
 	</footer>
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-	<!-- <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script> -->
-	<!-- <script type="module" src="{{url_for('static', filename='node_modules/three/src/three.js')}}"></script>
-		<script type="module" src="{{url_for('static', filename='node_modules/three/examples/jsm/loaders/GLTFLoader.js')}}"></script> -->
-	<script type="module" src="{{url_for('static', filename='main_builded.js')}}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<script type="module" src="{{url_for('static', filename='laptop_builded.js')}}"></script>
+	<script type="module" src="{{url_for('static', filename='logo_builded.js')}}"></script>
 </body>
 
 </html>

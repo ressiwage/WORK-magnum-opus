@@ -86,16 +86,19 @@ function init() {
 
     //lights
     lights = []
+    // #0f0204
+    // #FBE6E9
+    // #DB3B50
 
-    light1 = new THREE.PointLight(0xff0040, 400);
+    light1 = new THREE.PointLight(0x0f0204, 400);
     light1.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0x0000ff })));
     lights.push(light1)
 
-    light2 = new THREE.PointLight(0x0040ff, 400);
+    light2 = new THREE.PointLight(0xFBE6E9, 400);
     light2.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0x00ff00 })));
     lights.push(light2)
 
-    light3 = new THREE.PointLight(0x80ff80, 400);
+    light3 = new THREE.PointLight(0xDB3B50, 400);
     light3.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0xff0000 })));
     lights.push(light3)
 

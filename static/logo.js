@@ -108,10 +108,19 @@ ScrollTrigger.create({
             [".title__right", ".title__left"], {
                 opacity: 1,
                 duration: 1,
-                ease:"power3.out"
-                
+                ease:"power3.out",
+                onComplete() {
+                    gsap.to(
+                        [".title__right", ".title__left"], {
+                            y: 1000,
+                            duration: 10,
+                            ease:"power3.out"
+                            
+                        })
+                }
             }
         )
+        
     },
     onEnterBack: (self) => {
         trans=true;

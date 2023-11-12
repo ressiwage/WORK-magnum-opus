@@ -22,7 +22,6 @@ RUN pip3 install wheel
 
 RUN --mount=type=cache,target=/root/.cache/pip \
         pip install -r requirements.txt
-RUN pip3 install psycopg2-binary
 
 # RUN apt-get update 
 
@@ -30,4 +29,4 @@ COPY . /app
 
 ENTRYPOINT [ "python" ]
 
-CMD ["python/main.py" ]
+CMD ["main.py" ]

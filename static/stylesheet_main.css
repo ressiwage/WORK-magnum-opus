@@ -20,14 +20,14 @@
 
 @font-face {
     font-family: montreal;
-    src: url('/montreal/otf/PPNeueMontrealMono-Medium.otf'
+    src: url('/Montreal/otf/PPNeueMontrealMono-Medium.otf'
         );
     font-weight: 300;
 }
 
 @font-face {
     font-family: montreal;
-    src: url('/montreal/otf/PPNeueMontrealMono-Book.otf'
+    src: url('/Montreal/otf/PPNeueMontrealMono-Book.otf'
         );
     font-weight: 100;
 }

@@ -4,7 +4,8 @@ module.exports = {
   
   entry: {
     'logo_builded':'./logo.js',
-    'laptop_builded':'./laptop.js'
+    'laptop_builded':'./laptop.js',
+    'gsap_common_builded':'./gsap_common.js'
   }, // какой файл собираем
   output: { // куда поместим
     path: path.resolve(__dirname, './'), // путь

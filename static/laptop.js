@@ -10,13 +10,18 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Observer } from "gsap/Observer";
-import { VertexNormalsHelper } from 'three/addons/helpers/VertexNormalsHelper.js';
-import * as CameraUtils from 'three/addons/utils/CameraUtils.js';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 // const loader = new OBJLoader();
 gsap.registerPlugin(ScrollTrigger, Observer);
 
+function vw(percent) {
+    var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    return (percent * w) / 100;
+}
+function vh(percent) {
+    var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    return (percent * h) / 100;
+}
 
 var camera, scene, renderer;
 
@@ -48,7 +53,7 @@ function easeOutCubic(x) {
 
 var obj_notebook, screen, screenSurface;
 
-var lights, light1, light2, light3, light4;
+var lights, light1, light2, light3, common_light;
 
 var portalCamera, screen_copy, rightPortal, screenPortalTexture, reflectedPosition,
     rightPortalTexture, bottomLeftCorner, bottomRightCorner, topLeftCorner;
@@ -90,17 +95,22 @@ function init() {
     // #FBE6E9
     // #DB3B50
 
-    light1 = new THREE.PointLight(0x0f0204, 400);
+    light1 = new THREE.PointLight(0xff0000, 400);
     light1.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0x0000ff })));
     lights.push(light1)
 
-    light2 = new THREE.PointLight(0xFBE6E9, 400);
+    light2 = new THREE.PointLight(0xf5c1d4, 400);
     light2.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0x00ff00 })));
     lights.push(light2)
 
-    light3 = new THREE.PointLight(0xDB3B50, 400);
+    light3 = new THREE.PointLight(0xff196e, 400);
     light3.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0xff0000 })));
     lights.push(light3)
+
+    common_light = new THREE.PointLight(0xffffff, 300);
+    common_light.add(new THREE.Mesh(sphere, new THREE.MeshBasicMaterial({ color: 0xff0000 })));
+    common_light.position.y = 2
+    scene.add(common_light)
 
 
     lights.forEach((l) => { scene.add(l) })
@@ -211,7 +221,7 @@ function init() {
 
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(vw(100), vh(100));
 
     // const controls = new OrbitControls(camera, renderer.domElement);
     // controls.minDistance = 0.1;
@@ -220,22 +230,22 @@ function init() {
     console.log("document")
     console.log(document)
     document.getElementById('three-notebook').appendChild(renderer.domElement);
-    document.getElementById('debug-btn').addEventListener('click', (e) => {
-        console.log("camera")
-        console.log(camera)
-        console.log("display")
-        console.log(object.scene.children[0].children[1])
-        console.log(camera.position)
-        console.log(screenSurface.position)
-    })
+    // document.getElementById('debug-btn').addEventListener('click', (e) => {
+    //     console.log("camera")
+    //     console.log(camera)
+    //     console.log("display")
+    //     console.log(object.scene.children[0].children[1])
+    //     console.log(camera.position)
+    //     console.log(screenSurface.position)
+    // })
 
-    document.getElementById('debug-btn-1').addEventListener('click', (e) => {
-        // screenSurface.getWorldQuaternion(camera.quaternion)  
-        // screenSurface.getWorldPosition(camera.position);
-        // camera.lookAt( screenSurface.position.x,screenSurface.position.y-Math.sin(screenSurface.rotation.x)*0.2,screenSurface.position.z );
-        zoom = 1
-        console.log(camera)
-    })
+    // document.getElementById('debug-btn-1').addEventListener('click', (e) => {
+    //     // screenSurface.getWorldQuaternion(camera.quaternion)  
+    //     // screenSurface.getWorldPosition(camera.position);
+    //     // camera.lookAt( screenSurface.position.x,screenSurface.position.y-Math.sin(screenSurface.rotation.x)*0.2,screenSurface.position.z );
+    //     zoom = 1
+    //     console.log(camera)
+    // })
 
 
     window.addEventListener('resize', onWindowResize);
@@ -247,13 +257,13 @@ function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
 
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(vw(100), vh(100));
 
 }
 
 function render() {
     requestAnimationFrame(render);
-    document.getElementById('debug').innerHTML = obj_notebook.children[0].rotation.x
+    // document.getElementById('debug').innerHTML = obj_notebook.children[0].rotation.x
 
     const lightTime = Date.now() * 0.001;
     lights.forEach((l, ind) => {
@@ -272,7 +282,7 @@ function render() {
 
 }
 
-function calcDisabled(speed, onComplete){
+function calcDisabled(speed, onComplete) {
     if (laptopAnimationTime === 2 && speed > 0) {
         onComplete();
         return true
@@ -287,7 +297,7 @@ function calcDisabled(speed, onComplete){
 function scroll(speed, scrollTimeout) {
     console.log(speed, laptopAnimationTime)
 
-    
+
     scrollTimeout.restart(true);
 
     const display_center_coords = new THREE.Vector3(
@@ -333,17 +343,17 @@ function gsapInit() {
         console.log("ud", event, "vY", event.velocityY, "iD", event.isDragging)
         velocity = event.velocityY * (event.isDragging ? 1 : 1);
         for (var i = 0; i < 15; i += 1) {
-            if (calcDisabled(Math.sign(event.deltaY) * 0.0025 + velocity / 200000, () => { ltObserver.disable() })){return}
+            if (calcDisabled(Math.sign(event.deltaY) * 0.0025 + velocity / 200000, () => { ltObserver.disable() })) { return }
             pendingRenderFunctions.push(
                 () => {
                     scroll(Math.sign(event.deltaY) * 0.0025 + velocity / 200000, scrollTimeout)
                 }
             )
-            
-            
+
+
         }
     }
-    
+
     // / / / / / / / / //
     // create an observer and disable it to start
     let ltObserver = ScrollTrigger.observe({

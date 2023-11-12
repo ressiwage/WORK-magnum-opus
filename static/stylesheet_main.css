@@ -1,0 +1,350 @@
+@font-face {
+    font-family: extenda;
+    src: url('/Extenda/Extenda-100-Yotta-trial.ttf'
+        );
+    font-weight: 1000;
+}
+
+@font-face {
+    font-family: extenda;
+    src: url('/Extenda/Extenda-30-Deca-trial.ttf'
+        );
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: extenda;
+    src: url('/Extenda/Extenda-15-Nano-trial.ttf');
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: montreal;
+    src: url('/montreal/otf/PPNeueMontrealMono-Medium.otf'
+        );
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: montreal;
+    src: url('/montreal/otf/PPNeueMontrealMono-Book.otf'
+        );
+    font-weight: 100;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+#disclaimer{
+    background-color: black;
+    display: none;
+    min-width: 100vw;
+    color: #ffffff;
+}
+:root {
+    --text: #ff0000;
+    --back: #ffffff;
+    scroll-behavior: unset !important;
+    --margin-extenda: 3.5rem;
+    --my-pic-w: 30vw;
+    font-size: calc(100vw / 90);
+}
+
+body {
+    background-color: var(--back)
+        /*#0f0204*/
+    ;
+    color: var(--text)
+        /*#FBE6E9*/
+    ;
+    -ms-overflow-style: none !important;
+    /* IE and Edge */
+    scrollbar-width: unset !important;
+    /* Firefox */
+    max-width: 100vw;
+    overflow-x: hidden
+}
+
+p+p {
+    text-indent: 1.5em;
+}
+
+ul ul {
+    font-size: 0.5em;
+}
+
+section {
+    /* border:1px solid rgb(255, 0, 0); */
+    min-height: 100vh;
+}
+
+body::-webkit-scrollbar {
+    display: none !important;
+}
+
+
+
+#debug-1 {
+    position: fixed;
+    display: block;
+}
+
+#three-points {
+    position: absolute;
+    z-index: -1;
+}
+
+.title {
+    position: relative;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+/*only desktop*/
+.title__left {
+    /* position: absolute;
+    left:30%;*/
+    top: calc(50% + 5%);
+    transform: translateY(-50%) translateX(-100%);
+    left: 50%;
+    opacity: 0;
+    font-family: 'extenda', sans-serif;
+    font-weight: 1000;
+
+    /* right:50% */
+}
+
+.title__left>* {
+    margin-top: calc(0rem - var(--margin-extenda));
+    margin-bottom: calc(0rem - var(--margin-extenda));
+    font-weight: inherit;
+
+}
+
+.title__right {
+    position: absolute;
+    left: 50%;
+    /* bottom:10%; */
+    opacity: 0;
+    font-family: 'extenda', sans-serif;
+    font-weight: 1000;
+    top: calc(calc(50% + 5%) - calc(var(--margin-extenda) / 2));
+    transform: scaleY(4.5) scaleX(0.95);
+}
+
+.title__middle {
+    color: var(--text);
+    position: absolute;
+    left: 50%;
+    top: 25%;
+}
+
+.qualities__header {
+    color: var(--text);
+}
+
+.big-text {
+    font-size: 7.5rem;
+}
+
+.large-text {
+    font-size: 14rem;
+}
+
+.thin-text {
+    font-family: 'extenda', sans-serif;
+    font-size: 6.5rem;
+}
+
+.little-text {
+    font-family: 'extenda', sans-serif;
+    font-weight: 100;
+    font-size: 5rem;
+}
+
+.picture-holder {
+    position: relative;
+}
+
+.picture-holder span {
+    position: absolute;
+    right: 2.5%;
+    bottom: 2.5%;
+    color: white;
+}
+
+.about-me {
+    position: relative;
+}
+
+.my-picture {
+    position: absolute;
+    width: var(--my-pic-w);
+    height: 100vh;
+    right: 0%;
+    bottom: 0%;
+    /* transform: translateX(-50%)  */
+}
+
+.my-picture>img {
+    width: var(--my-pic-w);
+    height: 100vh;
+}
+
+.picture {
+    object-fit: cover
+}
+
+.projects__picture {
+    width: 50vw;
+    height: 25vw;
+    object-fit: contain
+}
+
+.about-me-text {
+    /* border: 2px solid white; */
+    max-width: calc(100vw - var(--my-pic-w));
+    min-height: 100vh;
+}
+
+.about-me-text__description {
+    max-width: inherit;
+}
+
+.header-text {
+    font-family: 'montreal', sans-serif;
+    font-weight: 100;
+    font-size: 4rem;
+}
+
+.body-text {
+    font-family: 'montreal', sans-serif;
+    font-weight: 100;
+    font-size: 1.6rem;
+}
+
+.qualities__text {
+    font-family: 'montreal', sans-serif;
+    font-weight: 300;
+    font-size: 1.5rem;
+}
+
+.qualities__header {
+    font-family: 'montreal', sans-serif;
+    font-weight: 300;
+    font-size: 3rem;
+}
+
+.logo {
+    font-family: 'montreal', sans-serif;
+    font-weight: 300;
+}
+
+.projects, .contacts {
+    background-color: black;
+    color: white;
+    min-height: 100vh;
+}
+
+.project-card {
+    /* border: 3px solid red; */
+}
+
+.simple-link {
+    color: white
+}
+
+.footer {
+    background-color: black;
+    color: white;
+}
+
+.logo a, .simple-link {
+    color: var(--text);
+    transition: text-decoration-color .3s
+}
+
+.logo a:hover, .simple-link:hover {
+    text-decoration-color: white;
+}
+
+.nav-menu {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.about-me-text__description {
+    bottom: 0
+}
+
+.my-experience>div {
+    bottom: 0;
+    position: absolute
+}
+
+@media only screen and (max-width: 768px) {
+    html, :root {
+        font-size: 16px !important;
+        max-width: 100vw;
+        overflow-x: hidden
+    }
+
+ 
+    .title {
+        display: none;
+    }
+
+    section {
+        min-height: 100vh;
+        min-width: 100vw;
+        max-width: 100vw;
+    }
+
+    .body-text {
+        font-size: 1.5rem
+    }
+
+    .about-me-text {
+        max-width: 100vw;
+    }
+
+    .my-picture {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        right: 0%;
+        bottom: 0%;
+        z-index: -1;
+        /* transform: translateX(-50%)  */
+    }
+
+    .my-picture>img {
+        width: 100vw;
+        height: 100vh;
+
+    }
+
+    .about-me-text__description {
+        bottom: unset;
+        position: relative !important
+    }
+
+    .col-6 {
+        width: 100% !important
+    }
+
+    .my-experience>div {
+        bottom: unset;
+        position: relative
+    }
+
+    .qualities__text {
+        font-size: 1.2rem!important;
+    }
+    #disclaimer{
+        display: block;
+    }
+    .logo{
+        margin-left: 0!important;
+        font-size: 0.8rem !important;
+    }
+}

@@ -2,7 +2,6 @@ from flask import Flask, render_template
 from os import path, pardir
 
 
-
 app = Flask(__name__, static_url_path='', static_folder='static')
 app.config['BASEDIR'] = path.abspath(path.join(path.dirname(__file__), pardir))
 
@@ -11,4 +10,4 @@ def hello_world():
     return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port = 80)

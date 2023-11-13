@@ -147,7 +147,7 @@ technologiesElems.forEach(elem => {
 
 ScrollTrigger.create({
     trigger: ".technologies",
-    start: "top top",
+    start: "bottom bottom",
     once: true,
     onEnter: (self) => {
         technologies()

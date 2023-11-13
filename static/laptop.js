@@ -346,7 +346,7 @@ function gsapInit() {
             if (calcDisabled(Math.sign(event.deltaY) * 0.0025 + velocity / 200000, () => { ltObserver.disable() })) { return }
             pendingRenderFunctions.push(
                 () => {
-                    scroll((self.isDragging?-1:1) * Math.sign(event.deltaY) * 0.0025 + velocity / 200000, scrollTimeout)
+                    scroll((-1) * Math.sign(event.deltaY) * 0.0025 + velocity / 200000, scrollTimeout)
                 }
             )
 
@@ -373,7 +373,9 @@ function gsapInit() {
         onPress: self => {
             // on touch devices like iOS, if we want to prevent scrolling, we must call preventDefault() on the touchstart (Observer doesn't do that because that would also prevent side-scrolling which is undesirable in most cases)
             ScrollTrigger.isTouch && self.event.preventDefault()
-          }
+          },
+          wheelSpeed: -1,
+
     });
     ltObserver.disable();
 

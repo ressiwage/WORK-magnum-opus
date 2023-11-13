@@ -346,7 +346,7 @@ function gsapInit() {
             if (calcDisabled(Math.sign(event.deltaY) * 0.0025 + velocity / 200000, () => { ltObserver.disable() })) { return }
             pendingRenderFunctions.push(
                 () => {
-                    scroll(Math.sign(event.deltaY) * 0.0025 + velocity / 200000, scrollTimeout)
+                    scroll((self.isDragging?-1:1) * Math.sign(event.deltaY) * 0.0025 + velocity / 200000, scrollTimeout)
                 }
             )
 
@@ -369,7 +369,11 @@ function gsapInit() {
             self._restoreScroll = () => self.scrollY(savedScroll); // if the native scroll repositions, force it back to where it should be
             document.addEventListener("scroll", self._restoreScroll, { passive: false });
         },
-        onDisable: self => document.removeEventListener("scroll", self._restoreScroll)
+        onDisable: self => document.removeEventListener("scroll", self._restoreScroll),
+        onPress: self => {
+            // on touch devices like iOS, if we want to prevent scrolling, we must call preventDefault() on the touchstart (Observer doesn't do that because that would also prevent side-scrolling which is undesirable in most cases)
+            ScrollTrigger.isTouch && self.event.preventDefault()
+          }
     });
     ltObserver.disable();
 

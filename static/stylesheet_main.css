@@ -33,12 +33,6 @@
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-#disclaimer{
-    background-color: black;
-    display: none;
-    min-width: 100vw;
-    color: #ffffff;
-}
 :root {
     --text: #ff0000;
     --back: #ffffff;
@@ -67,7 +61,7 @@ p+p {
     text-indent: 1.5em;
 }
 
-ul ul {
+ul:not(.preserve-fsize) ul {
     font-size: 0.5em;
 }
 
@@ -105,7 +99,6 @@ body::-webkit-scrollbar {
     top: calc(50% + 5%);
     transform: translateY(-50%) translateX(-100%);
     left: 50%;
-    opacity: 0;
     font-family: 'extenda', sans-serif;
     font-weight: 1000;
 
@@ -123,7 +116,6 @@ body::-webkit-scrollbar {
     position: absolute;
     left: 50%;
     /* bottom:10%; */
-    opacity: 0;
     font-family: 'extenda', sans-serif;
     font-weight: 1000;
     top: calc(calc(50% + 5%) - calc(var(--margin-extenda) / 2));
@@ -233,7 +225,7 @@ body::-webkit-scrollbar {
     font-size: 3rem;
 }
 
-.logo {
+.logo, .networks{
     font-family: 'montreal', sans-serif;
     font-weight: 300;
 }
@@ -257,12 +249,18 @@ body::-webkit-scrollbar {
     color: white;
 }
 
-.logo a, .simple-link {
+.networks a, .simple-link {
     color: var(--text);
+    background-color: var(--back);
     transition: text-decoration-color .3s
 }
-
-.logo a:hover, .simple-link:hover {
+ul{
+    list-style-type: none;
+}
+.my-qualities .col-6>ul>*{
+    /* opacity: 0; */
+}
+.networks a:hover, .simple-link:hover {
     text-decoration-color: white;
 }
 
@@ -340,10 +338,8 @@ body::-webkit-scrollbar {
     .qualities__text {
         font-size: 1.2rem!important;
     }
-    #disclaimer{
-        display: block;
-    }
-    .logo{
+ 
+    h1.logo{
         margin-left: 0!important;
         font-size: 0.8rem !important;
     }

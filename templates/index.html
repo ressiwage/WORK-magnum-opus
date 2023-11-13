@@ -5,8 +5,10 @@
 	<meta charset="utf-8">
 	<title>My first three.js app</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 	<link href="{{url_for('static', filename='stylesheet_main.css')}}" rel="stylesheet">
+	<link href="{{url_for('static', filename='gsap_prelaunch.css')}}" rel="stylesheet">
 
 </head>
 
@@ -14,31 +16,35 @@
 	<header class="nav-menu">
 		<h1 class="mx-5 my-1 logo d-inline-block">RESSIWAGE</h1>
 		<div class="nav-menu__contacts end-0 top-0 me-5 position-absolute my-1">
-			<h1 class="logo d-inline-block me-3"><a href="https://vk.com/ressiwage">VK</a></h1>
-			<h1 class="logo d-inline-block me-3"><a href="https://t.me/ressiwage">TG</h1>
-			<h1 class="logo d-inline-block me-3"><a href="https://perm.hh.ru/applicant/resumes/view?resume=4a0143eeff0b06bc400039ed1f666961447778">HH</a></h1>
-			<h1 class="logo d-inline-block "><a href="https://github.com/ressiwage">GH</a></h1>
+			<h1 class="networks d-inline-block "><a class="px-3" href="https://vk.com/ressiwage">VK</a></h1>
+			<h1 class="networks d-inline-block "><a class="px-3" href="https://t.me/ressiwage">TG</a></h1>
+			<h1 class="networks d-inline-block"><a class="px-3"
+					href="https://perm.hh.ru/applicant/resumes/view?resume=4a0143eeff0b06bc400039ed1f666961447778">HH</a>
+			</h1>
+			<h1 class="networks d-inline-block "><a class="px-3" href="https://github.com/ressiwage">GH</a></h1>
 		</div>
 	</header>
 
-	<div id="disclaimer">
-		<h1 class="text-center m-0 p-0">this site looks better from pc</h1>
-	</div>
-	
+
+
 	<section class="about-me">
 		<div class="about-me-text">
 			<h2 class="mt-5 text-center header-text">Hello.</h2>
 			<div class="position-absolute about-me-text__description">
 				<p class="mt-lg-5 mx-3 body-text">My name is Bersenyov Ilya.</p>
-				<p class="mx-3 body-text">I am a 3rd year student at the Higher School of Economics in Perm, Russia, majoring in software engineering. I am 20 years old, I live in Perm. I am stress-resistant, I can easily work in toxic teams, I am ready to understand legacy, I quickly learn new technologies.</p>
-				<p class="mx-3 body-text">Besides programming, I am interested in biohacking, living healthy lifestyle, going to gym. My goal is to learn everything in programming and create a magnum opus that will be admired by the whole spere.</p>
+				<p class="mx-3 body-text">I am a 3rd year student at the Higher School of Economics in Perm, Russia,
+					majoring in software engineering. I am 20 years old, I live in Perm. I am stress-resistant, I can
+					easily work in toxic teams, I am ready to understand legacy, I quickly learn new technologies.</p>
+				<p class="mx-3 body-text">Besides programming, I am interested in biohacking, living healthy lifestyle,
+					going to gym. My goal is to learn everything in programming and create a magnum opus that will be
+					admired by the whole sphere.</p>
 			</div>
 		</div>
 		<div class="picture-holder my-picture">
 			<img class="picture" src="{{url_for('static', filename='me.jpg')}}" alt="my foto">
 			<span>that is the only photo i have</span>
 		</div>
-		
+
 	</section>
 
 	<section class="title">
@@ -55,7 +61,7 @@
 
 	<section class="my-qualities position-relative">
 		<h3 class="thin-text text-center mt-5">What are my qualities?</h3>
-		
+
 		<div class="row">
 			<div class="col-6 py-2 px-5">
 				<h3 class="thin-text text-center mb-2 qualities__header">Positive</h3>
@@ -65,27 +71,16 @@
 						<li>I am able to work in toxic teams</li>
 						<li>I can learn new technologies in tight deadlines</li>
 					</ul>
-					<li>I am communicative</li>
-					<ul>
-						<li>I quickly find a common language with people</li>
-					</ul>
+					<li>I quicky learn new technologies</li>
 					<li>I am responsible</li>
 					<ul>
 						<li>If I fuck up I will do everything to fix my mistake in the shortest possible time</li>
-					</ul>
-					<li>I want to improve your company</li>
-					<ul>
-						<li>My salary depends on the state of your company so I will do everything possible to improve both</li>
 					</ul>
 				</ul>
 			</div>
 			<div class="col-6 py-2 px-5">
 				<h3 class="thin-text text-center mb-2 qualities__header">Negative</h3>
 				<ul class="qualities__text">
-					<li>I am not creative</li>
-					<ul>
-						<li>If you will say "do something beautiful" i will probably do something that definetly will not be beautiful. It's because it's hard for me to work without technical requirements</li>
-					</ul>
 					<li>I can't work more than 6 hours a day</li>
 					<ul>
 						<li>that is because I am a student</li>
@@ -93,15 +88,96 @@
 				</ul>
 			</div>
 		</div>
-		
+
 	</section>
 
 	<section class="my-experience position-relative">
 		<h3 class="thin-text text-center mt-5">My experience</h3>
 		<div class="mx-5">
-			<p class="qualities__text">At my last job in "Malevin" from 09.2021 to 11.2023, I was developing dwh based on google BigQuery and Mysql. Also I was developing SPAs on flask and REST backend.</p>
-			<p class="qualities__text">Last project on my last job was an infrastructure transfer (7 types of tables, each 2-5 sheets formed using js, each table is a way to represent data from the database), based on Google tables and apps script on flask+mysql+sqlalchemy. the result is a microservice, fast-working solution that is easy to maintain.</p>
-			<p class="qualities__text">Another project on this job was a small project, the purpose of which is to develop a service for obtaining a document from a header, a 3-level table and a footer, data is filled in from json, accountants should be able to edit the structure of the table. The result is a spa with a section for the text edition of the jinja2 html template (for the programmer), a preview section (rendered document in an iframe), a section of the jinja2 html template for the accountant. the latter was implemented using template rendering without value substitution (that is, rendering not with render_template, but directly) using some tricks, and then it was delivered to CKEditor.</p>
+			<p class="qualities__text">At my last job in "Malevin" from 09.2021 to 11.2023, I was developing dwh based
+				on google BigQuery and Mysql. Also I was developing SPAs on flask and REST backend.</p>
+			<p class="qualities__text">Last project on my last job was an infrastructure transfer (7 types of tables,
+				each 2-5 sheets formed using js, each table is a way to represent data from the database), based on
+				Google tables and apps script on flask+mysql+sqlalchemy. the result is a microservice, fast-working
+				solution that is easy to maintain.</p>
+			<p class="qualities__text">Another project on this job was a small project, the purpose of which is to
+				develop a service for obtaining a document from a header, a 3-level table and a footer, data is filled
+				in from json, accountants should be able to edit the structure of the table. The result is a spa with a
+				section for the text edition of the jinja2 html template (for the programmer), a preview section
+				(rendered document in an iframe), a section of the jinja2 html template for the accountant. the latter
+				was implemented using template rendering without value substitution (that is, rendering not with
+				render_template, but directly) using some tricks, and then it was delivered to CKEditor.</p>
+		</div>
+	</section>
+
+	<section class="technologies">
+		<div class="row">
+			<h3 class="thin-text text-center mt-5">Technologies I worked with</h3>
+			<div class="col-6 py-2 px-5">
+				<h3 class="thin-text text-center mb-2 qualities__header">Libraries, frameworks and languages</h3>
+				<div class="row">
+					<ul class="qualities__text col-4">
+
+						<li>Python 3.x</li>
+						<ul>
+							<li>FastApi</li>
+							<li>Flask</li>
+							<li>Sqlalchemy</li>
+							<li>Werkzeug</li>
+							<li>Jinja2</li>
+							<li>Pytest</li>
+							<li>PyJWT</li>
+							<li>Pandas</li>
+							<li>Matplotlib</li>
+							<li>Geopandas</li>
+							<li>Scikit</li>
+							<li>Shapely</li>
+							<li>Selenium</li>
+							<li>osmnx</li>
+							<li>BeautifulSoup</li>
+						</ul>
+
+					</ul>
+					<ul class="qualities__text col-4">
+						<li>JavaScript</li>
+						<ul>
+							<li>Three.js</li>
+							<li>AppsScript</li>
+							<li>GSAP</li>
+							<li>ArcGis</li>
+							<li>Node.js</li>
+						</ul>
+
+					</ul>
+					<ul class="qualities__text col-4">
+
+						<li>other</li>
+						<ul>
+							<li>Docker</li>
+							<li>Unix</li>
+							<li>MySQL</li>
+							<li>PostgreSQL</li>
+							<li>Google Bigquery</li>
+							<li>Google Cloud client</li>
+							<li>Bootstrap</li>
+							<li>React</li>
+						</ul>
+					</ul>
+				</div>
+
+			</div>
+			<div class="col-6 py-2 px-5">
+				<h3 class="thin-text text-center mb-2 qualities__header">methodologies, principles and patterns</h3>
+				<ul class="qualities__text">
+					<li>SOLID</li>
+					<li>DRY, KISS, YAGNI</li>
+					<li>BEM</li>
+					<li>microservice architecture</li>
+					<li>asynchronous programming</li>
+
+				</ul>
+			</div>
+		</div>
 		</div>
 	</section>
 
@@ -115,30 +191,53 @@
 
 			<div class="col-12 project-card position-relative mt-5">
 				<h3 class="thin-text text-center mb-2 qualities__header mt-3">2.5d raytracing on .net framework</h3>
-				<img src="{{url_for('static', filename='3d_preview.jpg')}}" alt="" class="projects__picture my-2 project-card__image translate-middle-x position-relative start-50 ">
-				<p class="project-card__body qualities__text m-2">This is a project that I developed on my first course. This is a pseudo 3D raycaster reminiscent of wolfenstein 3d and developed from scratch on winforms. Available on <a class="simple-link" href="https://github.com/ressiwage/wolfenstein3d">link</a>.</p>
+				<img src="{{url_for('static', filename='3d_preview.jpg')}}" alt=""
+					class="projects__picture my-2 project-card__image translate-middle-x position-relative start-50 ">
+				<p class="project-card__body qualities__text m-2">This is a project that I developed on my first course.
+					This is a pseudo 3D raycaster reminiscent of wolfenstein 3d and developed from scratch on winforms.
+					Available on <a class="simple-link" href="https://github.com/ressiwage/wolfenstein3d">link</a>.</p>
 			</div>
-			
+
 			<div class="col-12 project-card position-relative mt-5">
 				<h3 class="thin-text text-center mb-2 qualities__header mt-3">retool apps</h3>
-				<img src="{{url_for('static', filename='retool_preview.png')}}" alt="" class="projects__picture my-2 project-card__image translate-middle-x position-relative start-50 ">
-				<p class="project-card__body qualities__text m-2">On my las job i was making projects on retool for accountants to view and edit data in database. Sadly, I can not show all of them to you.</p>
+				<img src="{{url_for('static', filename='retool_preview.png')}}" alt=""
+					class="projects__picture my-2 project-card__image translate-middle-x position-relative start-50 ">
+				<p class="project-card__body qualities__text m-2">On my las job i was making projects on retool for
+					accountants to view and edit data in database. Sadly, I can not show all of them to you.</p>
 			</div>
 
 			<div class="col-12 project-card position-relative mt-5">
 				<h3 class="thin-text text-center mb-2 qualities__header mt-3">Other</h3>
-				<p class="project-card__body qualities__text m-2">I have other different projects that you can find in my github.</p>
+				<p class="project-card__body qualities__text m-2">I have other different projects that you can find in
+					my github.</p>
 				<ul class="qualities__text">
-					<li><a class="simple-link" href="https://github.com/ressiwage/fastapi-test">Test crud</a> on fastapi+sqlalchemy with docker setup (that was first time when I was working with FastApi)</li>
-					<li>This <a class="simple-link" href="https://github.com/ressiwage/magnum_opus">site</a> made with three.js and gsap (i was working with it first time too)</li>
-					<li>Second course project: <a class="simple-link" href="https://github.com/ressiwage/hse-practice-clinics"></a>Russian clinics heatmap</a>. I am not proud if it but that is a big work</li>
-					<li><a class="simple-link" href="https://github.com/ressiwage/globex">Test task</a> in some company on react and sql server</li>
-					<li><a class="simple-link" href="https://github.com/ressiwage/quant-">Test task</a> in some company on scrapy</li>
-					<li><a class="simple-link" href="https://github.com/ressiwage/bttest">Test crud</a> on flask+sqlalchemy</li>
+					<li><a class="simple-link" href="https://github.com/ressiwage/fastapi-test">This crud</a> and <a
+							class="simple-link" href="https://github.com/ressiwage/bttest">This crud</a> on Fastapi and
+						Flask.</li>
+					<ul>
+						<li>Those projects I made as test tasks on some vacancies.</li>
+					</ul>
+					<li>This <a class="simple-link" href="https://github.com/ressiwage/magnum_opus">site</a> made with
+						three.js and gsap</li>
+					<ul>
+						The site was made in 2 weeks, before starting work I had no idea what is gsap, three and how to
+						work with 3d
+					</ul>
+					<li>Second course project: <a class="simple-link"
+							href="https://github.com/ressiwage/hse-practice-clinics"></a>Russian clinics heatmap</a>.
+					</li>
+					<ul>
+						<li>That is a small project I am not proud of.</li>
+					</ul>
+					<li><a class="simple-link" href="https://github.com/ressiwage/globex">Test task</a> in some company
+						on react and sql server</li>
+					<ul>
+						<li>Just a simple project on react</li>
+					</ul>
 				</ul>
 			</div>
 
-			
+
 		</div>
 	</section>
 
@@ -147,7 +246,9 @@
 		<ul class="qualities__text mx-5">
 			<li>vk: <a class="simple-link" href="https://vk.com/ressiwage">https://vk.com/ressiwage</a></li>
 			<li>tg: <a class="simple-link" href="https://t.me/ressiwage">https://t.me/ressiwage</a></li>
-			<li>hh: <a class="simple-link" href="https://perm.hh.ru/applicant/resumes/view?resume=4a0143eeff0b06bc400039ed1f666961447778">https://perm.hh.ru</a></li>
+			<li>hh: <a class="simple-link"
+					href="https://perm.hh.ru/applicant/resumes/view?resume=4a0143eeff0b06bc400039ed1f666961447778">https://perm.hh.ru</a>
+			</li>
 			<li>gh: <a class="simple-link" href="https://github.com/ressiwage">https://github.com/ressiwage</a></li>
 			<li>email: ressiwage@ya.ru</li>
 		</ul>
@@ -157,7 +258,9 @@
 		<p class="footer__text text-center mb-0 p-3">powered with flask, webpack, three.js, gsap</p>
 	</footer>
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
 	<script type="module" src="{{url_for('static', filename='laptop_builded.js')}}"></script>
 	<script type="module" src="{{url_for('static', filename='logo_builded.js')}}"></script>
 	<script type="module" src="{{url_for('static', filename='gsap_common_builded.js')}}"></script>

@@ -33,3 +33,123 @@ gsap.registerPlugin(ScrollTrigger);
 //         markers: true
 //     },
 // })
+
+const qualitiesElements = gsap.utils.toArray('.my-qualities .col-6>ul>*')
+
+
+const qualities = gsap.timeline({
+    repeat: 0,
+
+    yoyo: false,
+})
+
+qualitiesElements.forEach(elem => {
+    qualities.from(elem,
+        {
+            scaleY: 0,
+            // yPercent: 50,
+            duration: 0.3,
+            ease: "power3.out"
+        })
+})
+
+
+ScrollTrigger.create({
+    trigger: ".my-qualities",
+    start: "bottom bottom",
+    once: true,
+    onEnter: (self) => {
+        qualities()
+    },
+});
+ScrollTrigger.create({
+    trigger: ".projects",
+    start: "top bottom",
+    onEnter: (self) => {
+        gsap.to(['.networks a', '.simple-link'], {
+            backgroundColor: 'rgba(0,0,0,0.0)',
+            ease: "power3.out",
+            duration: 1
+        })
+    },
+});
+
+ScrollTrigger.create({
+    trigger: ".portfolio",
+    start: "top bottom",
+    onEnterBack: (self) => {
+        gsap.to(['.networks a', '.simple-link'], {
+            backgroundColor: 'var(--back)',
+            ease: "power3.out",
+            duration: 1
+        })
+    },
+});
+
+gsap.utils.toArray('.my-experience p').forEach(
+    (elem) => {
+        ScrollTrigger.create({
+            trigger: elem,
+            start: 'bottom bottom',
+            onEnter: () => {
+                gsap.to(elem,
+                    {
+                        scaleY: 1,
+                        translateY:0,
+                        duration: 0.3,
+                        once: true,
+                        ease: "power3.out"
+                    })
+            }
+        })
+    }
+)
+gsap.utils.toArray('.project-card').forEach(
+    (elem) => {
+        ScrollTrigger.create({
+            trigger: elem,
+            start: 'bottom bottom',
+            onEnter: () => {
+                gsap.to(elem,
+                    {
+                        scaleY: 1,
+                        translateY:0,
+                        duration: 0.3,
+                        once: true,
+                        ease: "power3.out"
+                    })
+            }
+        })
+    }
+)
+
+const technologiesElems = gsap.utils.shuffle(gsap.utils.toArray('.technologies .col-6>ul li'))
+
+
+
+const technologies = gsap.timeline({
+    repeat: 0,
+
+    yoyo: false,
+})
+
+technologiesElems.forEach(elem => {
+    qualities.from(elem,
+        {
+            scaleY: 0,
+            // yPercent: 50,
+            duration: 0.3,
+            ease: "power3.out"
+        },
+        "<+=0.05")
+})
+
+
+ScrollTrigger.create({
+    trigger: ".technologies",
+    start: "top top",
+    once: true,
+    onEnter: (self) => {
+        technologies()
+    },
+});

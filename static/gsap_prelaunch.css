@@ -1,0 +1,9 @@
+.my-experience p{
+    transform: scaleY(0);
+}
+.title__right, .title__left {
+    opacity: 0;
+}
+.project-card{
+    transform: scaleY(0) translateY(50%);
+}

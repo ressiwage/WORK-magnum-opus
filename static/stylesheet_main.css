@@ -278,6 +278,15 @@ ul{
     bottom: 0;
     position: absolute
 }
+::-moz-selection { /* Code for Firefox */
+    color: var(--back);
+    background: var(--text);
+  }
+  
+  ::selection {
+    color: var(--back);
+    background: var(--text);
+  }
 
 @media only screen and (max-width: 768px) {
     html, :root {

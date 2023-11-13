@@ -298,7 +298,7 @@ function scroll(speed, scrollTimeout) {
     console.log(speed, laptopAnimationTime)
 
 
-    scrollTimeout.restart(true);
+    if(scrollTimeout!==undefined){scrollTimeout.restart(true);}
 
     const display_center_coords = new THREE.Vector3(
         screenSurface.position.x,
@@ -336,66 +336,92 @@ function scroll(speed, scrollTimeout) {
 
 function gsapInit() {
 
-    var scrollTimeout = gsap.delayedCall(1, () => allowScroll = true).pause(); // controls how long we should wait after an Observer-based animation is initiated before we allow another scroll-related action
+    
 
 
-    const onUpDown = (event) => {
-        console.log("ud", event, "vY", event.velocityY, "iD", event.isDragging)
-        velocity = event.velocityY * (event.isDragging ? 1 : 1);
-        for (var i = 0; i < 15; i += 1) {
-            if (calcDisabled(Math.sign(event.deltaY) * 0.0025 + velocity / 200000, () => { ltObserver.disable() })) { return }
-            pendingRenderFunctions.push(
-                () => {
-                    scroll((-1) * Math.sign(event.deltaY) * 0.0025 + velocity / 200000, scrollTimeout)
-                }
-            )
-
-
-        }
-    }
+    
 
     // / / / / / / / / //
     // create an observer and disable it to start
-    let ltObserver = ScrollTrigger.observe({
-        type: "wheel,touch",
-        onUp: (self) => onUpDown(self),
-        onDown: (self) => onUpDown(self),
-        tolerance: 10,
-        preventDefault: true,
-        onEnable(self) {
-            scrollTimeout.restart(true);
-            // when enabling, we should save the scroll position and freeze it. This fixes momentum-scroll on Macs, for example.
-            let savedScroll = self.scrollY();
-            self._restoreScroll = () => self.scrollY(savedScroll); // if the native scroll repositions, force it back to where it should be
-            document.addEventListener("scroll", self._restoreScroll, { passive: false });
-        },
-        onDisable: self => document.removeEventListener("scroll", self._restoreScroll),
-        onPress: self => {
-            // on touch devices like iOS, if we want to prevent scrolling, we must call preventDefault() on the touchstart (Observer doesn't do that because that would also prevent side-scrolling which is undesirable in most cases)
-            ScrollTrigger.isTouch && self.event.preventDefault()
-          },
-          wheelSpeed: -1,
-
-    });
-    ltObserver.disable();
-
-
-    // pin swipe section and initiate observer
-    ScrollTrigger.create({
-        trigger: ".portfolio",
-        pin: true,
-        start: "top top",
-        end: "+=500", // just needs to be enough to not risk vibration where a user's fast-scroll shoots way past the end
-        onEnter: (self) => {
-            if (ltObserver.isEnabled) { return } // in case the native scroll jumped past the end and then we force it back to where it should be.
-            self.scroll(self.start + 1); // jump to just one pixel past the start of this section so we can hold there.
-            ltObserver.enable(); // STOP native scrolling
-        },
-        onEnterBack: (self) => {
-            if (ltObserver.isEnabled) { return } // in case the native scroll jumped backward past the start and then we force it back to where it should be.
-            self.scroll(self.end - 1); // jump to one pixel before the end of this section so we can hold there.
-            ltObserver.enable(); // STOP native scrolling
+    if (getComputedStyle(document.body).getPropertyValue('--mobile') == 0) {
+        var scrollTimeout = gsap.delayedCall(1, () => allowScroll = true).pause(); // controls how long we should wait after an Observer-based animation is initiated before we allow another scroll-related action
+        const onUpDown = (event) => {
+            console.log("ud", event, "vY", event.velocityY, "iD", event.isDragging)
+            velocity = event.velocityY * (event.isDragging ? 1 : 1);
+            for (var i = 0; i < 15; i += 1) {
+                if (calcDisabled(Math.sign(event.deltaY) * 0.0025 + velocity / 200000, () => { ltObserver.disable() })) { return }
+                pendingRenderFunctions.push(
+                    () => {
+                        scroll(Math.sign(event.deltaY) * 0.0025 + velocity / 200000, scrollTimeout)
+                    }
+                )
+    
+    
+            }
         }
-    });
+        var ltObserver = ScrollTrigger.observe({
+            type: "wheel,touch",
+            onUp: (self) => onUpDown(self),
+            onDown: (self) => onUpDown(self),
+            tolerance: 10,
+            preventDefault: true,
+            onEnable(self) {
+                scrollTimeout.restart(true);
+                // when enabling, we should save the scroll position and freeze it. This fixes momentum-scroll on Macs, for example.
+                let savedScroll = self.scrollY();
+                self._restoreScroll = () => self.scrollY(savedScroll); // if the native scroll repositions, force it back to where it should be
+                document.addEventListener("scroll", self._restoreScroll, { passive: false });
+            },
+            onDisable: self => document.removeEventListener("scroll", self._restoreScroll),
+            onPress: self => {
+                // on touch devices like iOS, if we want to prevent scrolling, we must call preventDefault() on the touchstart (Observer doesn't do that because that would also prevent side-scrolling which is undesirable in most cases)
+                ScrollTrigger.isTouch && self.event.preventDefault()
+            }
+        });
+        ltObserver.disable();
 
+
+        // pin swipe section and initiate observer
+        ScrollTrigger.create({
+            trigger: ".portfolio",
+            pin: true,
+            start: "top top",
+            end: "+=500", // just needs to be enough to not risk vibration where a user's fast-scroll shoots way past the end
+            onEnter: (self) => {
+                if (ltObserver.isEnabled) { return } // in case the native scroll jumped past the end and then we force it back to where it should be.
+                self.scroll(self.start + 1); // jump to just one pixel past the start of this section so we can hold there.
+                ltObserver.enable(); // STOP native scrolling
+            },
+            onEnterBack: (self) => {
+                if (ltObserver.isEnabled) { return } // in case the native scroll jumped backward past the start and then we force it back to where it should be.
+                self.scroll(self.end - 1); // jump to one pixel before the end of this section so we can hold there.
+                ltObserver.enable(); // STOP native scrolling
+            }
+        });
+    }
+    else {
+        ScrollTrigger.create({
+            trigger: ".portfolio",
+            start: "top top",
+            onEnter: (self) => {
+                for (var i = 0; i < 45; i++) {
+                    pendingRenderFunctions.push(
+                        () => {
+                            scroll(0.05)
+                        }
+                    )
+                }
+            },
+            onEnterBack: (self) => {
+                for (var i = 0; i < 45; i++) {
+                    pendingRenderFunctions.push(
+                        () => {
+                            scroll(-0.05)
+                        }
+                    )
+                }
+            }
+        });
+    }
 }
+

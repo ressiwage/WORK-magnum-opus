@@ -326,7 +326,7 @@ ul{
         position: relative !important
     }
 
-    .col-6 {
+    .col-6,.col-4 {
         width: 100% !important
     }
 
@@ -342,5 +342,25 @@ ul{
     h1.logo{
         margin-left: 0!important;
         font-size: 0.8rem !important;
+    }
+    .px-5{
+        padding-left:1rem!important;
+        padding-right:1rem!important
+    }
+    .me-5{
+        margin-right: 0!important;
+    }
+    .mx-5{
+        margin-left: 0.5rem!important;
+        margin-right: 0.5rem!important;
+    }
+    .qualities__header{
+        font-size: 2rem!important;
+    }
+    ul{
+        padding:2rem
+    }
+    ul ul{
+        font-size: 1em !important;
     }
 }

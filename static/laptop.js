@@ -402,7 +402,7 @@ function gsapInit() {
     else {
         ScrollTrigger.create({
             trigger: ".portfolio",
-            start: "top top",
+            start: "top bottom",
             onEnter: (self) => {
                 for (var i = 0; i < 45; i++) {
                     pendingRenderFunctions.push(
